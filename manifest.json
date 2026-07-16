@@ -6,8 +6,9 @@
 
   "permissions": [
     "storage",
-    "downloads"
-  ],
+    "downloads",
+    "tabs"
+],
 
   "host_permissions": [
     "https://www.zaubacorp.com/*"

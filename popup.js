@@ -2,12 +2,23 @@ const button = document.getElementById("startBtn");
 
 button.addEventListener("click", async () => {
 
-    document.getElementById("status").textContent = "Starting...";
+    console.log("Button Clicked");
 
-    chrome.runtime.sendMessage({
-
-        action: "START"
-
+    const [tab] = await chrome.tabs.query({
+        active: true,
+        currentWindow: true
     });
+
+    console.log(tab);
+
+    chrome.tabs.sendMessage(
+        tab.id,
+        { action: "PARSE_CURRENT_PAGE" },
+        (companies) => {
+
+            console.log(companies);
+
+        }
+    );
 
 });

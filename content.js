@@ -21,25 +21,21 @@ function parseCompanies() {
         );
 
         companies.push({
-
-            company_name: companyAnchor?.textContent.trim() ?? "",
-
-            company_link: companyAnchor?.href ?? "",
-
+            companyName: companyAnchor?.textContent.trim() ?? "",
+            companyLink: companyAnchor?.href ?? "",
             cin: badges[0]?.textContent.trim() ?? "",
-
             address: badges[1]?.textContent.trim() ?? "",
-
             status: statusElement?.textContent.trim() ?? ""
-
         });
 
     });
 
     return companies;
-
 }
 
 const companies = parseCompanies();
 
-console.log(companies);
+chrome.runtime.sendMessage({
+    action: "PAGE_PARSED",
+    companies: companies
+});
