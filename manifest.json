@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "ScrapeBolt",
+  "description": "High-performance company scraper.",
+  "version": "0.1.0",
+
+  "permissions": [
+    "storage",
+    "downloads"
+  ],
+
+  "host_permissions": [
+    "https://www.zaubacorp.com/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "ScrapeBolt"
+  },
+
+  "content_scripts": [
+  {
+    "matches": [
+      "https://www.zaubacorp.com/*"
+    ],
+    "js": [
+      "content.js"
+    ]
+  }
+]
+}

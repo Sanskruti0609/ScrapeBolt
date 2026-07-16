@@ -1,0 +1,51 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    width:300px;
+    font-family:Arial;
+}
+
+.container{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+h1{
+    text-align:center;
+    color:#0077ff;
+}
+
+.status{
+    padding:10px;
+    border-radius:8px;
+    background:white;
+}
+
+#status{
+    color:green;
+    font-weight:bold;
+}
+
+button{
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    background:#0077ff;
+
+    color:white;
+
+    font-size:15px;
+
+}
