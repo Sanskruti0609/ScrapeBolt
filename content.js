@@ -1,32 +1,45 @@
 console.log("⚡ ScrapeBolt Loaded");
 
-const companyCards = document.querySelectorAll(".companies-list.mb-3");
+function parseCompanies() {
 
-const companies = [];
+    const companyCards = document.querySelectorAll(".companies-list.mb-3");
 
-companyCards.forEach(card => {
+    const companies = [];
 
-    const companyAnchor = card.querySelector(
-        "h2.ms-2.mb-0 a.text-reset.text-decoration-none"
-    );
+    companyCards.forEach(card => {
 
-    const companyName = companyAnchor?.textContent.trim();
-    const companyLink = companyAnchor?.href;
+        const companyAnchor = card.querySelector(
+            "h2.ms-2.mb-0 a.text-reset.text-decoration-none"
+        );
 
-    const badges = card.querySelectorAll(
-    ".badge.badge-border.d-flex"
-    );
-    const cin = badges[0]?.textContent.trim();
+        const badges = card.querySelectorAll(
+            ".badge.badge-border.d-flex"
+        );
 
-    const address = badges[1]?.textContent.trim();
+        const statusElement = card.querySelector(
+            ".badge.badge-primary.d-flex.align-items-center"
+        );
 
-    const company = {
-    company_name: companyName,
-    company_link: companyLink,
-    cin: cin,
-    address: address
-};
+        companies.push({
 
-console.log(company);
- 
-});
+            company_name: companyAnchor?.textContent.trim() ?? "",
+
+            company_link: companyAnchor?.href ?? "",
+
+            cin: badges[0]?.textContent.trim() ?? "",
+
+            address: badges[1]?.textContent.trim() ?? "",
+
+            status: statusElement?.textContent.trim() ?? ""
+
+        });
+
+    });
+
+    return companies;
+
+}
+
+const companies = parseCompanies();
+
+console.log(companies);
